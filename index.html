@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кинотеатр «Люмьер» — учебное бронирование</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <h1>🎬 Кинотеатр «Люмьер»</h1>
+  <p class="demo">Учебное демо: бронирования сохраняются только в этом браузере. Реальный билет не оформляется.</p>
+</header>
+<div id="msg" class="msg" role="status" aria-live="polite"></div>
+<main class="layout">
+  <section class="panel" aria-labelledby="h-sess">
+    <h2 id="h-sess">1. Сеанс</h2>
+    <div id="sessions" class="sessions"></div>
+    <h2>2. Фильтры мест</h2>
+    <div class="filters">
+      <label>Цена места до: <output id="priceOut"></output> ₽
+        <input id="maxPrice" type="range" min="250" max="400" step="50" value="400"></label>
+      <label>Ряд
+        <select id="rowFilter"><option value="all">Все ряды</option><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+      <button id="resetFilters" type="button">Сбросить</button>
+    </div>
+    <h2>3. План зала</h2>
+    <div class="legend" aria-hidden="true"><span>○ свободно</span><span>✓ выбрано</span><span>✕ занято</span></div>
+    <div class="screen">ЭКРАН</div>
+    <div id="scheme" class="scheme" role="group" aria-label="План зала"></div>
+    <p id="empty" class="hint" hidden>Нет мест с такими фильтрами — измените цену или ряд.</p>
+    <h3>Список мест (то же самое для клавиатуры)</h3>
+    <ul id="list" class="list"></ul>
+  </section>
+  <aside>
+    <section class="panel" id="cardPanel" aria-labelledby="h-card">
+      <h2 id="h-card">Ваш выбор</h2>
+      <div id="card"></div>
+      <form id="form" novalidate>
+        <label for="name">Имя на билете</label>
+        <input id="name" autocomplete="name" aria-describedby="nameErr">
+        <p id="nameErr" class="err" role="alert"></p>
+        <p class="total">Итого: <strong id="total">0 ₽</strong></p>
+        <p id="formErr" class="err" role="alert"></p>
+        <button id="confirm" type="submit" class="primary">Подтвердить бронь</button>
+      </form>
+    </section>
+    <section class="panel" aria-labelledby="h-my">
+      <h2 id="h-my">Мои брони</h2>
+      <div id="bookings"></div>
+      <button id="resetDemo" type="button" class="ghost">Сбросить демо</button>
+    </section>
+  </aside>
+</main>
+<div id="bar" class="bar" hidden><span id="barTxt"></span><button type="button" id="barBtn" class="primary">К оформлению ↓</button></div>
+<script src="script.js"></script>
+</body>
+</html>
